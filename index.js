@@ -4,6 +4,9 @@
 if (Number(process.version.slice(1).split(".")[0]) < 16) throw new Error("Node 16.x or higher is required. Update Node on your system.");
 require("dotenv").config();
 
+//custom
+const keep_alive = require('./KeepAlive.js')
+
 // Load up the discord.js library
 const { Client, Collection } = require("discord.js");
 // We also load the rest of the things we need in this file:
