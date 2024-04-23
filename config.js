@@ -3,10 +3,10 @@ const { Intents } = require("discord.js");
 /* config */
 const config = {
   // Bot Admins, level 9 by default. Array of user ID strings.
-  "admins": [],
+  "admins": ["591230594399207424"],
 
   // Bot Support, level 8 by default. Array of user ID strings
-  "support": [],
+  "support": ["591230594399207424"],
 
   /*
   * Intents the bot needs.
@@ -16,7 +16,7 @@ const config = {
   */
   intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES ],
   // Partials your bot may need should go here, CHANNEL is required for DM's
-  partials: ["CHANNEL"],
+  partials: ["1221377549117030420"],
 
   /*
   * Default per-server settings. These settings are entered in a database on first load, 
@@ -24,15 +24,15 @@ const config = {
   * DO NOT REMOVE THIS BEFORE YOUR BOT IS LOADED AND FUNCTIONAL.
   */
   "defaultSettings" : {
-    "prefix": "~",
-    "modLogChannel": "mod-log",
-    "modRole": "Moderator",
-    "adminRole": "Administrator",
+    "prefix": "=",
+    "modLogChannel": "security-log",
+    "modRole": "⠀✨️⠀・⠀high dev",
+    "adminRole": "⠀🌀⠀・⠀administrator",
     "systemNotice": "true", // This gives a notice when a user tries to run a command that they do not have permission to use.
     "commandReply": "true", // Toggle this if you want the bot to ping the command executor or not.
     "welcomeChannel": "welcome",
     "welcomeMessage": "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
-    "welcomeEnabled": "false"
+    "welcomeEnabled": "true"
   },
 
   // PERMISSION LEVEL DEFINITIONS.
@@ -40,7 +40,7 @@ const config = {
   permLevels: [
     // This is the lowest permission level, this is for users without a role.
     { level: 0,
-      name: "User", 
+      name: "・member", 
       /*
       * Don't bother checking, just return true which allows them to execute any command their
       * level allows them to.
@@ -51,7 +51,7 @@ const config = {
     // This is your permission level, the staff levels should always be above the rest of the roles.
     { level: 2,
       // This is the name of the role.
-      name: "Moderator",
+      name: "⠀⛅⠀・⠀Security",
       /*
       * The following lines check the guild the message came from for the roles.
       * Then it checks if the member that authored the message has the role.
@@ -69,7 +69,7 @@ const config = {
     },
 
     { level: 3,
-      name: "Administrator", 
+      name: "⠀🌀⠀・⠀administrator", 
       check: (message) => {
         try {
           const adminRole = message.guild.roles.cache.find(r => r.name.toLowerCase() === message.settings.adminRole.toLowerCase());
@@ -82,7 +82,7 @@ const config = {
     
     // This is the server owner.
     { level: 4,
-      name: "Server Owner", 
+      name: "⠀✨️⠀・⠀high dev", 
       /*
       * Simple check, if the guild owner id matches the message author's ID, then it will return true.
       * Otherwise it will return false.
@@ -98,7 +98,7 @@ const config = {
     * to any server they joins, in order to help troubleshoot the bot on behalf of owners.
     */
     { level: 8,
-      name: "Bot Support",
+      name: "⠀✨️⠀・⠀high dev",
       // The check is by reading if an ID is part of this array. Yes, this means you need to
       // change this and reboot the bot to add a support user. Make it better yourself!
       check: (message) => {
@@ -109,7 +109,7 @@ const config = {
 
     // Bot Admin has some limited access like rebooting the bot or reloading commands.
     { level: 9,
-      name: "Bot Admin",
+      name: "⠀✨️⠀・⠀high dev",
       check: (message) => {
         const botAdmin = message.author ?? message.user;
         return config.admins.includes(botAdmin.id);
@@ -123,7 +123,7 @@ const config = {
     * Updated to utilize the Teams type from the Application, pulls a list of "Owners" from it.
     */
     { level: 10,
-      name: "Bot Owner", 
+      name: "⠀✨️⠀・⠀high dev", 
       // Another simple check, compares the message author id to a list of owners found in the bot application.
       check: (message) => {
         const owner = message.author ?? message.user;
